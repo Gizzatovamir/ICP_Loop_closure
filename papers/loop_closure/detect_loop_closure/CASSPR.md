@@ -1,0 +1,1 @@
+статья: https://www.robots.ox.ac.uk/~joao/publications/xia_iccv2023.pdf
