@@ -12,4 +12,5 @@ P.S. ОТдельно про трансфомеры будет написано 
 ## Loop closure
 
 1. [Correction of Systematic Odometry Errors in Mobile Robots](error_correction%2Fcorrection_of_systematic_odometry_errors.md)
-2. 
+2. [DPC-Net: Deep Pose Correction for VisualLocalization](error_correction%2FDPC-NET.md)
+3. [Self-Supervised Deep Pose Corrections for Robust Visual Odometry](error_correction%2FSS-DPC-NET.md)
