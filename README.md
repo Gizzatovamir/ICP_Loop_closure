@@ -16,7 +16,7 @@ WIP - work in progress
 | Image publisher                    | ✅    |
 | Poser publisher                    | ✅    |
 | Depth image subscriber             | WIP  |
-| Depth image publisher              | ❌    |
+| Depth image publisher              | WIP  |
 | Place recognition subscriber       | ✅❌   |
 | Place recognition result publisher | ❌    |
 | Val Node                           | ❌    |
