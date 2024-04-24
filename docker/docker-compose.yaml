@@ -1,0 +1,60 @@
+version: "3"
+
+services:
+  image_publisher:
+    build:
+      context: ./image_publisher
+      dockerfile: publisher.Dockerfile
+    volumes:
+      - ../data/database:/data
+    networks:
+      - "default"
+    environment:
+      - TOPIC='/zed2i_back/zed_node/left/image_rect_color'
+      - DEBUG=FALSE
+
+  lidar_publisher:
+    build:
+      context: ./lidar_data_publisher
+      dockerfile: publisher.Dockerfile
+    environment:
+      - TOPIC_NAME='sensor_msgs/msg/PointCloud'
+    volumes:
+      - ./data/database:/data
+    networks:
+      - "default"
+
+  depth_image_sub:
+    build:
+      context: ./depth_completion_sub
+      dockerfile: subscriber.Dockerfile
+    volumes:
+      - ../data/database/:/data
+    networks:
+      - "default"
+    environment:
+      - IMAGE_TOPIC='/zed2i_back/zed_node/left/image_rect_color'
+      - LIDAR_TOPIC='sensor_msgs/msg/PointCloud'
+      - RESULT_TOPIC='depth_image'
+    depends_on:
+      - lidar_publisher
+      - image_publisher
+
+  place_recognition_subscriber:
+    build:
+      context: ./seqot_sub
+      dockerfile: subscriber.Dockerfile
+    volumes:
+      - ../data/database/:/data
+    environment:
+      -
+    networks:
+      - "default"
+    depends_on:
+      - lidar_publisher
+      - pose_publihser
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1450
