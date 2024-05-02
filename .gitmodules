@@ -1,0 +1,3 @@
+[submodule "CostDCNet"]
+	path = CostDCNet
+	url = https://github.com/Gizzatovamir/CostDCNet
